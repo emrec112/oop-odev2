@@ -50,5 +50,7 @@ class courseType{
 };
 
 int main(){
+    int number;
+    studentType students[number];
     return 0;
 }
