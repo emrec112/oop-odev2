@@ -10,7 +10,14 @@ class personType{
 
     public:
         void setStudentName(string firstName, string lastName);
-        void getStudentName();
+
+        string getStudentFirstName() const{
+            return firstName;
+        }
+
+        string getStudentLastName() const{
+            return lastName;
+        }
 };
 
 void personType::setStudentName(string firstName, string lastName){
@@ -18,62 +25,87 @@ void personType::setStudentName(string firstName, string lastName){
     this->lastName = lastName;
 }
 
-void personType::getStudentName(){
-    cout << firstName << "||" << lastName << "||";
-}
-
 class courseType{
     private:
-        string courseName;
-        int courseNo;
+        string courseName, courseNo;
         char courseGrade;//student sınıfı bunu kullanıcak özellikle
         char courseCredits;
 
     public:
-        // void setCourseInfo();
-        // void print(int one);
-        // void print(int one, int two);
-        // void getCredits();
-        // void getCourseNumber();
-        // void getGrade();
-        // courseType();
+        courseType(string name = "", string number = "", int credits = 0, char gr = 'F')
+        : courseName(name), courseNo(number), courseCredits(credits), courseGrade(gr) {
+
+        }
+
+        string getCourseName()const{
+            return courseName;
+        }
+
+        string getCoursNo()const{
+            return courseNo;
+        }
+
+        int getCourseCredit() const{
+            return courseCredits; 
+        }
+        char getCourseGrade() const{
+        return courseGrade; 
+        }
 
 };
 
 class studentType : public personType{
     private:
         int numberOfCourses;
-        courseType *course;//gradeyi burdan çekicez
-        string studentId;
+        courseType *courses;//gradeyi burdan çekicez
+        int studentId;
         char isTuitionPaid;
     
     public:
         void print();
-        // void print(int one);
-        // void print(int one, int two);
-        void setInfo(string firstName, string lastName, string id, char isTuitionPaid, int numberOfCourses);
-        // void getHoursEnrolled();
-        // void getGpa();
-        // void billingAmount();
+        void setInfo(string firstName, string lastName, int id, char isTuitionPaid, int numberOfCourses);
+        void setCourses(courseType *courses);
         studentType();
+        ~studentType(){
+            delete[] courses;
+        }
 };
 
 studentType::studentType(){
     numberOfCourses = 0;
-    course = NULL;
+    courses = NULL;
     isTuitionPaid = 'N';
 }
 
-void studentType::setInfo(string firstName, string lastName, string id, char isTuitionPaid, int numberOfCourses){
+void studentType::setInfo(string firstName, string lastName, int id, char isTuitionPaid, int numberOfCourses){
     setStudentName(firstName, lastName);
     studentId = id;
     this->isTuitionPaid = isTuitionPaid;
     this->numberOfCourses = numberOfCourses;
 }
 
+void studentType::setCourses(courseType *courses){
+    this->courses = new courseType[numberOfCourses];
+    for(int c = 0; c < numberOfCourses; c++){
+        this->courses[c] = courses[c];
+    }
+}
+
 void studentType::print(){
-    getStudentName();
-    cout << studentId << "||" << isTuitionPaid << "||" << numberOfCourses << endl;
+    
+    cout << getStudentFirstName() 
+        << " " <<getStudentLastName()
+        << " " << studentId << " " 
+        << isTuitionPaid << " " 
+        << numberOfCourses << endl;
+
+    for(int h = 0; h < numberOfCourses; h++){
+        cout << courses[h].getCourseName()
+            << " " << courses[h].getCoursNo()
+            << " " << courses[h].getCourseCredit()
+            << " " << courses[h].getCourseGrade() << endl;
+    }
+    cout << "..." << endl;
 }
 
 int main(){
@@ -86,18 +118,29 @@ int main(){
 
     file >> tuitionPerHours;
 
-    string fname, lname, id, line;
-    int nOfcourses;
+    string fname, lname, skip;
+    int nOfcourses, id;
     char control;
     for(int i = 0; i < number; i++){
         file >> fname >> lname >> id >> control >> nOfcourses;
         students[i].setInfo(fname, lname, id, control, nOfcourses);
-        while(getline(file, line)){
-            
+
+        courseType *courses = new courseType[nOfcourses];
+        for(int j = 0; j < nOfcourses; j++){
+            string courseName, courseNumber;
+            int courseCredits;
+            char courseGrade;
+
+            file >> courseName >> courseNumber >> courseCredits >> courseGrade;
+            courses[j] = courseType(courseName, courseNumber, courseCredits, courseGrade);
         }
+        students[i].setCourses(courses);
+        getline(file, skip);
+        getline(file, skip);
+        delete[] courses;
     }
 
-    students[0].print();
+    for(int i = 0; i < number; i++)students[i].print();
 
     return 0;
 }
