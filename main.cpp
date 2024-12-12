@@ -140,7 +140,7 @@ float studentType::getGPA(){
                 total += 2 * this->courses[i].getCourseCredit();
                 break;
             case 'D':
-                total += 1 * this->courses[i].getCourseCredit();
+                total += this->courses[i].getCourseCredit();
                 break;
             default:
                 break;
