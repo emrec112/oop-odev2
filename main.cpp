@@ -1,11 +1,12 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 class personType{
     private:
-        string firstName;
+        string firstName;//sonra bunları birleştir
         string lastName;
 
     public:
@@ -29,7 +30,7 @@ class courseType{
     private:
         string courseName, courseNo;
         char courseGrade;//student sınıfı bunu kullanıcak özellikle
-        char courseCredits;
+        int courseCredits;
 
     public:
         courseType(string name = "", string number = "", int credits = 0, char gr = 'F')
@@ -48,9 +49,12 @@ class courseType{
         int getCourseCredit() const{
             return courseCredits; 
         }
+
         char getCourseGrade() const{
         return courseGrade; 
         }
+
+        //sette ekle!
 
 };
 
@@ -62,9 +66,12 @@ class studentType : public personType{
         char isTuitionPaid;
     
     public:
-        void print();
+        void print(ofstream &outputFile);
         void setInfo(string firstName, string lastName, int id, char isTuitionPaid, int numberOfCourses);
         void setCourses(courseType *courses);
+        int getHoursEnrolled();
+        float getGPA();
+        //set info ekle
         studentType();
         ~studentType(){
             delete[] courses;
@@ -91,21 +98,60 @@ void studentType::setCourses(courseType *courses){
     }
 }
 
-void studentType::print(){
+int studentType::getHoursEnrolled(){
+    int total = 0;
+    for(int i = 0; i < numberOfCourses; i++){
+        total += this->courses[i].getCourseCredit();
+    }
+    return total;
+}
+
+float studentType::getGPA(){
+    float total = 0;
+
+    for(int i = 0; i < numberOfCourses; i++){
+        char check = this->courses[i].getCourseGrade();
+        
+        switch(check){
+            case 'A':
+                total += 4;
+                break;
+            case 'B':
+                total += 3;
+                break;
+            case 'C':
+                total += 2;
+                break;
+            case 'D':
+                total += 1;
+                break;
+            default:
+                break;
+        }
+    }
+    total /= numberOfCourses;
+    return total;
+}
+
+void studentType::print(ofstream &outputFile){//setwleri düzenle
     
-    cout << getStudentFirstName() 
-        << " " <<getStudentLastName()
-        << " " << studentId << " " 
-        << isTuitionPaid << " " 
-        << numberOfCourses << endl;
+    if(isTuitionPaid == 'N')
+        return;
+
+    outputFile<< getStudentFirstName() << " " << getStudentLastName() << endl 
+        << "id : " << studentId <<endl
+        << "number of courses : " <<numberOfCourses << endl
+        << "Course Name "<< setw(10) << "Course No " << setw(10) << "Credits " << setw(10) << "Grade " << endl;
 
     for(int h = 0; h < numberOfCourses; h++){
-        cout << courses[h].getCourseName()
-            << " " << courses[h].getCoursNo()
-            << " " << courses[h].getCourseCredit()
-            << " " << courses[h].getCourseGrade() << endl;
+        outputFile<< courses[h].getCourseName()
+            << setw(10) << courses[h].getCoursNo()
+            << setw(10) << courses[h].getCourseCredit()
+            << setw(10) << courses[h].getCourseGrade() << endl;
     }
-    cout << "..." << endl;
+    outputFile<< "toplam kredi : " << getHoursEnrolled() << endl
+        << "GPA : " << getGPA() << endl
+        << "................." << endl;
 }
 
 int main(){
@@ -140,7 +186,10 @@ int main(){
         delete[] courses;
     }
 
-    for(int i = 0; i < number; i++)students[i].print();
+    //düzenleme için döngü eklenecek!!1
+
+    ofstream outputFile("output.txt");
+    for(int i = 0; i < number; i++)students[i].print(outputFile );
 
     return 0;
 }
