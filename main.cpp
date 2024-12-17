@@ -6,24 +6,18 @@ using namespace std;
 
 class personType{
     private:
-        string firstName;//sonra bunları birleştir
-        string lastName;
+        string name;//sonra bunları birleştir
 
     public:
-        void setStudentName(string firstName, string lastName);
+        void setStudentName(string name);
 
-        string getStudentFirstName() const{
-            return firstName;
-        }
-
-        string getStudentLastName() const{
-            return lastName;
+        string getStudentName() const{
+            return name;
         }
 };
 
-void personType::setStudentName(string firstName, string lastName){
-    this->firstName = firstName;
-    this->lastName = lastName;
+void personType::setStudentName(string name){
+    this->name = name;
 }
 
 class courseType{
@@ -82,7 +76,7 @@ class studentType : public personType {
     
     public:
         void print(ofstream &outputFile);
-        void setInfo(string firstName, string lastName, int id, bool isTuitionPaid, int numberOfCourses, int tuition);
+        void setInfo(string name, int id, bool isTuitionPaid, int numberOfCourses, int tuition);
         void setCourses(courseType *courses);
         int getHoursEnrolled();
         float getGPA();
@@ -100,8 +94,8 @@ studentType::studentType(){
     isTuitionPaid = false;
 }
 
-void studentType::setInfo(string firstName, string lastName, int id, bool isTuitionPaid, int numberOfCourses, int tuition){
-    setStudentName(firstName, lastName);
+void studentType::setInfo(string name, int id, bool isTuitionPaid, int numberOfCourses, int tuition){
+    setStudentName(name);
     studentId = id;
     this->isTuitionPaid = isTuitionPaid;
     this->numberOfCourses = numberOfCourses;
@@ -157,7 +151,7 @@ int studentType::bill(){
 void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları sıralı yazdırma ekle
     
     outputFile
-        << "Student Name: " << getStudentFirstName() << " " << getStudentLastName() << endl 
+        << "Student Name: " << getStudentName() << endl 
         << "Student ID : " << studentId << endl
         << "Number of courses enrolled: " << numberOfCourses << endl
         << endl;
@@ -211,9 +205,10 @@ int main(int argc, char** argv){
     int courseCount, id;
     char tuitionChar;
     for(int i = 0; i < studentCount; i++){
+        // TODO: fname lname diye alma, ismin hepsini birden al. (regex?)
         file >> fname >> lname >> id >> tuitionChar >> courseCount;
         students[i].setInfo(
-            fname, lname, id,
+            fname + " " + lname, id,
             tuitionChar == 'Y',
             courseCount, tuitionPerHours);
 
