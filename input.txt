@@ -1,19 +1,340 @@
-3 345
-Lisa Miller 890238 Y 4
-Mathematics MTH345 5 A
-Chemistry CHM101 3 B
-Philosophy PHL200 2 B
-History HIS356 3 C
-.................
-Jean Maller 894238 Y 4
-Biology BIO150 4 A
-Physics PHY357 3 C
-Literature LIT210 3 A
-Sociology SOC300 6 B
-.................
-Paul Muller 896238 Y 4
-Economics ECO101 4 B
-Astronomy AST250 3 A
-Psychology PSY110 3 C
-Geography GEO360 3 A
-.................
+50 400
+Elif Ergin 726857 Y 4
+OOP COM2009 3 E
+Diferansiyel MAT2031 4 B
+ElektronikDevreler BIL2017 3 F
+AyrıkMatematik BIL2015 3 F
+Duygu Duran 193159 Y 7
+DataStructures COM2005 3 F
+Diferansiyel MAT2031 4 A
+OOP COM2009 3 F
+AyrıkMatematik BIL2015 3 A
+ElektronikDevreler BIL2017 3 C
+DigitalDesign COM2007 3 D
+ElektronikLab BIL2021 2 A
+Volkan Eren 533280 N 3
+Diferansiyel MAT2031 4 D
+ElektronikLab BIL2021 2 E
+ElektronikDevreler BIL2017 3 E
+Burak Duran 764076 N 7
+DigitalDesign COM2007 3 B
+OOP COM2009 3 F
+ElektronikDevreler BIL2017 3 C
+Diferansiyel MAT2031 4 F
+DataStructures COM2005 3 A
+ElektronikLab BIL2021 2 F
+AyrıkMatematik BIL2015 3 A
+Mehmet Yılmaz 688040 N 7
+Diferansiyel MAT2031 4 A
+DataStructures COM2005 3 D
+DigitalDesign COM2007 3 B
+AyrıkMatematik BIL2015 3 B
+ElektronikDevreler BIL2017 3 C
+OOP COM2009 3 A
+ElektronikLab BIL2021 2 B
+Mehmet Çelik 478631 Y 6
+DataStructures COM2005 3 B
+Diferansiyel MAT2031 4 A
+AyrıkMatematik BIL2015 3 E
+ElektronikDevreler BIL2017 3 B
+ElektronikLab BIL2021 2 E
+OOP COM2009 3 D
+Eren Pektaş 962891 N 7
+OOP COM2009 3 B
+DataStructures COM2005 3 B
+ElektronikLab BIL2021 2 A
+AyrıkMatematik BIL2015 3 C
+Diferansiyel MAT2031 4 B
+DigitalDesign COM2007 3 E
+ElektronikDevreler BIL2017 3 A
+Ebru Camuzoğlu 697374 Y 7
+Diferansiyel MAT2031 4 B
+ElektronikLab BIL2021 2 F
+OOP COM2009 3 E
+AyrıkMatematik BIL2015 3 F
+DataStructures COM2005 3 B
+ElektronikDevreler BIL2017 3 F
+DigitalDesign COM2007 3 A
+Burak Pektaş 952824 N 7
+ElektronikDevreler BIL2017 3 A
+Diferansiyel MAT2031 4 E
+DigitalDesign COM2007 3 A
+OOP COM2009 3 C
+DataStructures COM2005 3 E
+ElektronikLab BIL2021 2 A
+AyrıkMatematik BIL2015 3 F
+Ege Kurt 653849 Y 7
+ElektronikDevreler BIL2017 3 F
+DigitalDesign COM2007 3 C
+AyrıkMatematik BIL2015 3 C
+ElektronikLab BIL2021 2 F
+OOP COM2009 3 E
+Diferansiyel MAT2031 4 A
+DataStructures COM2005 3 B
+Seda Kurt 650370 N 7
+DigitalDesign COM2007 3 A
+ElektronikLab BIL2021 2 A
+ElektronikDevreler BIL2017 3 A
+DataStructures COM2005 3 A
+AyrıkMatematik BIL2015 3 B
+Diferansiyel MAT2031 4 B
+OOP COM2009 3 E
+Tuğba Şahin 159423 N 7
+ElektronikDevreler BIL2017 3 E
+AyrıkMatematik BIL2015 3 F
+OOP COM2009 3 C
+ElektronikLab BIL2021 2 A
+DataStructures COM2005 3 F
+DigitalDesign COM2007 3 B
+Diferansiyel MAT2031 4 F
+Hüseyin Yavuz 922567 N 7
+ElektronikLab BIL2021 2 D
+Diferansiyel MAT2031 4 B
+OOP COM2009 3 B
+DataStructures COM2005 3 F
+ElektronikDevreler BIL2017 3 C
+DigitalDesign COM2007 3 D
+AyrıkMatematik BIL2015 3 B
+Eren Kaya 497375 N 5
+Diferansiyel MAT2031 4 A
+AyrıkMatematik BIL2015 3 E
+ElektronikLab BIL2021 2 D
+ElektronikDevreler BIL2017 3 D
+DigitalDesign COM2007 3 F
+Gökhan Başar 826303 Y 4
+OOP COM2009 3 E
+DigitalDesign COM2007 3 E
+ElektronikDevreler BIL2017 3 E
+Diferansiyel MAT2031 4 A
+Hatice Doğan 851488 N 7
+ElektronikLab BIL2021 2 C
+Diferansiyel MAT2031 4 A
+ElektronikDevreler BIL2017 3 F
+AyrıkMatematik BIL2015 3 D
+DataStructures COM2005 3 E
+DigitalDesign COM2007 3 C
+OOP COM2009 3 C
+Hakan Uzun 361730 Y 4
+Diferansiyel MAT2031 4 B
+OOP COM2009 3 E
+ElektronikDevreler BIL2017 3 C
+DigitalDesign COM2007 3 F
+Hüseyin Pektaş 459556 N 3
+DataStructures COM2005 3 B
+AyrıkMatematik BIL2015 3 C
+OOP COM2009 3 B
+Ali Sezer 713998 N 3
+ElektronikDevreler BIL2017 3 F
+AyrıkMatematik BIL2015 3 A
+DataStructures COM2005 3 A
+Aylin Yılmaz 451044 Y 7
+AyrıkMatematik BIL2015 3 C
+DigitalDesign COM2007 3 E
+DataStructures COM2005 3 A
+OOP COM2009 3 A
+ElektronikLab BIL2021 2 D
+Diferansiyel MAT2031 4 E
+ElektronikDevreler BIL2017 3 E
+Ahmet Demir 703213 Y 3
+OOP COM2009 3 C
+ElektronikLab BIL2021 2 F
+DigitalDesign COM2007 3 B
+Merve Bulut 632572 N 5
+ElektronikDevreler BIL2017 3 B
+AyrıkMatematik BIL2015 3 C
+Diferansiyel MAT2031 4 C
+OOP COM2009 3 D
+DigitalDesign COM2007 3 C
+Şule Güler 769622 Y 6
+DigitalDesign COM2007 3 E
+ElektronikDevreler BIL2017 3 B
+ElektronikLab BIL2021 2 C
+Diferansiyel MAT2031 4 A
+DataStructures COM2005 3 D
+AyrıkMatematik BIL2015 3 D
+Buse Erdoğan 799227 Y 7
+DataStructures COM2005 3 C
+AyrıkMatematik BIL2015 3 A
+ElektronikLab BIL2021 2 D
+DigitalDesign COM2007 3 C
+ElektronikDevreler BIL2017 3 F
+OOP COM2009 3 A
+Diferansiyel MAT2031 4 E
+Aylin Sezer 358394 N 7
+AyrıkMatematik BIL2015 3 C
+Diferansiyel MAT2031 4 D
+DataStructures COM2005 3 F
+ElektronikDevreler BIL2017 3 E
+OOP COM2009 3 D
+DigitalDesign COM2007 3 F
+ElektronikLab BIL2021 2 C
+Eren Camuzoğlu 197338 N 3
+ElektronikDevreler BIL2017 3 E
+OOP COM2009 3 F
+DigitalDesign COM2007 3 A
+Aysel Uzun 900564 Y 7
+ElektronikLab BIL2021 2 D
+DigitalDesign COM2007 3 A
+DataStructures COM2005 3 D
+AyrıkMatematik BIL2015 3 D
+ElektronikDevreler BIL2017 3 F
+OOP COM2009 3 D
+Diferansiyel MAT2031 4 B
+Uğur Sezer 870147 Y 7
+AyrıkMatematik BIL2015 3 B
+OOP COM2009 3 F
+Diferansiyel MAT2031 4 E
+ElektronikLab BIL2021 2 F
+DataStructures COM2005 3 D
+ElektronikDevreler BIL2017 3 F
+DigitalDesign COM2007 3 A
+Ahmet Doğan 339785 Y 7
+DigitalDesign COM2007 3 B
+DataStructures COM2005 3 C
+ElektronikLab BIL2021 2 A
+AyrıkMatematik BIL2015 3 E
+Diferansiyel MAT2031 4 F
+ElektronikDevreler BIL2017 3 A
+OOP COM2009 3 C
+Yusuf Erdoğan 730761 Y 7
+ElektronikLab BIL2021 2 B
+AyrıkMatematik BIL2015 3 A
+Diferansiyel MAT2031 4 B
+OOP COM2009 3 A
+DigitalDesign COM2007 3 A
+ElektronikDevreler BIL2017 3 A
+DataStructures COM2005 3 B
+Hatice Yavuz 407837 Y 7
+OOP COM2009 3 C
+DataStructures COM2005 3 F
+ElektronikDevreler BIL2017 3 A
+DigitalDesign COM2007 3 B
+AyrıkMatematik BIL2015 3 F
+ElektronikLab BIL2021 2 A
+Diferansiyel MAT2031 4 A
+Barış Polat 679481 N 7
+ElektronikDevreler BIL2017 3 D
+OOP COM2009 3 D
+Diferansiyel MAT2031 4 E
+ElektronikLab BIL2021 2 C
+DataStructures COM2005 3 F
+AyrıkMatematik BIL2015 3 B
+DigitalDesign COM2007 3 B
+Kemal Yılmaz 685424 N 4
+OOP COM2009 3 D
+DigitalDesign COM2007 3 E
+ElektronikLab BIL2021 2 D
+AyrıkMatematik BIL2015 3 D
+Emre Koç 984028 N 4
+Diferansiyel MAT2031 4 A
+DigitalDesign COM2007 3 B
+AyrıkMatematik BIL2015 3 E
+OOP COM2009 3 C
+Berna Bayraktar 266734 Y 6
+AyrıkMatematik BIL2015 3 D
+OOP COM2009 3 C
+ElektronikDevreler BIL2017 3 C
+DigitalDesign COM2007 3 E
+DataStructures COM2005 3 D
+ElektronikLab BIL2021 2 A
+Ayşe Aslan 518880 Y 5
+DigitalDesign COM2007 3 A
+OOP COM2009 3 B
+AyrıkMatematik BIL2015 3 E
+ElektronikDevreler BIL2017 3 C
+DataStructures COM2005 3 F
+Uğur Aktaş 791940 Y 7
+OOP COM2009 3 E
+Diferansiyel MAT2031 4 B
+DataStructures COM2005 3 D
+ElektronikDevreler BIL2017 3 B
+AyrıkMatematik BIL2015 3 A
+DigitalDesign COM2007 3 E
+ElektronikLab BIL2021 2 C
+Osman Demir 385086 Y 7
+DataStructures COM2005 3 C
+DigitalDesign COM2007 3 E
+AyrıkMatematik BIL2015 3 B
+ElektronikLab BIL2021 2 B
+OOP COM2009 3 F
+Diferansiyel MAT2031 4 E
+ElektronikDevreler BIL2017 3 D
+Gökhan Başar 715030 Y 5
+OOP COM2009 3 D
+ElektronikLab BIL2021 2 F
+AyrıkMatematik BIL2015 3 D
+DataStructures COM2005 3 F
+Diferansiyel MAT2031 4 A
+Deniz Candan 980581 N 3
+ElektronikDevreler BIL2017 3 F
+AyrıkMatematik BIL2015 3 D
+Diferansiyel MAT2031 4 C
+Hasan Kılıç 981526 N 3
+DigitalDesign COM2007 3 B
+ElektronikLab BIL2021 2 B
+ElektronikDevreler BIL2017 3 D
+Uğur Yılmaz 437198 N 7
+AyrıkMatematik BIL2015 3 D
+Diferansiyel MAT2031 4 D
+DataStructures COM2005 3 A
+ElektronikLab BIL2021 2 D
+OOP COM2009 3 A
+DigitalDesign COM2007 3 A
+ElektronikDevreler BIL2017 3 C
+Gökhan Başar 119083 N 7
+ElektronikDevreler BIL2017 3 B
+OOP COM2009 3 B
+ElektronikLab BIL2021 2 F
+DataStructures COM2005 3 D
+Diferansiyel MAT2031 4 B
+DigitalDesign COM2007 3 F
+AyrıkMatematik BIL2015 3 C
+Volkan Yılmaz 197663 Y 7
+AyrıkMatematik BIL2015 3 D
+ElektronikDevreler BIL2017 3 D
+OOP COM2009 3 A
+ElektronikLab BIL2021 2 D
+DataStructures COM2005 3 D
+DigitalDesign COM2007 3 E
+Diferansiyel MAT2031 4 D
+Furkan Kurt 274958 Y 5
+AyrıkMatematik BIL2015 3 F
+OOP COM2009 3 B
+ElektronikLab BIL2021 2 E
+DigitalDesign COM2007 3 D
+Diferansiyel MAT2031 4 D
+Meltem Ergin 636259 N 3
+ElektronikDevreler BIL2017 3 C
+ElektronikLab BIL2021 2 C
+OOP COM2009 3 F
+Batuhan Sari 649383 N 7
+Diferansiyel MAT2031 4 D
+OOP COM2009 3 D
+DigitalDesign COM2007 3 C
+AyrıkMatematik BIL2015 3 E
+ElektronikLab BIL2021 2 B
+DataStructures COM2005 3 C
+ElektronikDevreler BIL2017 3 E
+Ceren Aktaş 260103 N 6
+OOP COM2009 3 C
+AyrıkMatematik BIL2015 3 F
+DataStructures COM2005 3 C
+Diferansiyel MAT2031 4 E
+DigitalDesign COM2007 3 E
+ElektronikLab BIL2021 2 B
+Damla Dinçer 937048 Y 7
+DigitalDesign COM2007 3 F
+ElektronikLab BIL2021 2 C
+Diferansiyel MAT2031 4 B
+DataStructures COM2005 3 F
+AyrıkMatematik BIL2015 3 C
+OOP COM2009 3 A
+ElektronikDevreler BIL2017 3 A
+Hande Çetin 410529 Y 7
+AyrıkMatematik BIL2015 3 C
+Diferansiyel MAT2031 4 A
+DataStructures COM2005 3 D
+OOP COM2009 3 F
+ElektronikLab BIL2021 2 D
+DigitalDesign COM2007 3 B
+ElektronikDevreler BIL2017 3 A

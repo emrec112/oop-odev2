@@ -72,17 +72,17 @@ class courseType{
 
 };
 
-class studentType : public personType{
+class studentType : public personType {
     private:
         int numberOfCourses;
         courseType *courses;//gradeyi burdan çekicez
         int studentId;
-        char isTuitionPaid;
+        bool isTuitionPaid;
         int tuitionPerHours;
     
     public:
         void print(ofstream &outputFile);
-        void setInfo(string firstName, string lastName, int id, char isTuitionPaid, int numberOfCourses, int tuition);
+        void setInfo(string firstName, string lastName, int id, bool isTuitionPaid, int numberOfCourses, int tuition);
         void setCourses(courseType *courses);
         int getHoursEnrolled();
         float getGPA();
@@ -97,10 +97,10 @@ class studentType : public personType{
 studentType::studentType(){
     numberOfCourses = 0;
     courses = NULL;
-    isTuitionPaid = 'N';
+    isTuitionPaid = false;
 }
 
-void studentType::setInfo(string firstName, string lastName, int id, char isTuitionPaid, int numberOfCourses, int tuition){
+void studentType::setInfo(string firstName, string lastName, int id, bool isTuitionPaid, int numberOfCourses, int tuition){
     setStudentName(firstName, lastName);
     studentId = id;
     this->isTuitionPaid = isTuitionPaid;
@@ -108,7 +108,7 @@ void studentType::setInfo(string firstName, string lastName, int id, char isTuit
     this->tuitionPerHours = tuition;
 }
 
-void studentType::setCourses(courseType *courses){
+void studentType::setCourses(courseType courses[]){
     this->courses = new courseType[numberOfCourses];
     for(int c = 0; c < numberOfCourses; c++){
         this->courses[c] = courses[c];
@@ -116,38 +116,38 @@ void studentType::setCourses(courseType *courses){
 }
 
 int studentType::getHoursEnrolled(){
-    int total = 0;
+    int sum = 0;
     for(int i = 0; i < numberOfCourses; i++){
-        total += this->courses[i].getCourseCredit();
+        sum += this->courses[i].getCourseCredit();
     }
-    return total;
+    return sum;
 }
 
 float studentType::getGPA(){
-    float total = 0;
+    float gpa = 0;
 
     for(int i = 0; i < numberOfCourses; i++){
         char check = this->courses[i].getCourseGrade();
         
         switch(check){
             case 'A':
-                total += 4 * this->courses[i].getCourseCredit();
+                gpa += 4 * this->courses[i].getCourseCredit();
                 break;
             case 'B':
-                total += 3 * this->courses[i].getCourseCredit();
+                gpa += 3 * this->courses[i].getCourseCredit();
                 break;
             case 'C':
-                total += 2 * this->courses[i].getCourseCredit();
+                gpa += 2 * this->courses[i].getCourseCredit();
                 break;
             case 'D':
-                total += this->courses[i].getCourseCredit();
+                gpa += this->courses[i].getCourseCredit();
                 break;
             default:
                 break;
         }
     }
-    total /= getHoursEnrolled();
-    return total;
+    gpa /= getHoursEnrolled();
+    return gpa;
 }
 
 int studentType::bill(){
@@ -156,45 +156,69 @@ int studentType::bill(){
 
 void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları sıralı yazdırma ekle
     
-    outputFile<< getStudentFirstName() << " " << getStudentLastName() << endl 
-        << "id : " << studentId <<endl
-        << "number of courses : " <<numberOfCourses << endl;
+    outputFile
+        << "Student Name: " << getStudentFirstName() << " " << getStudentLastName() << endl 
+        << "Student ID : " << studentId << endl
+        << "Number of courses enrolled: " << numberOfCourses << endl
+        << endl;
     
-    if(isTuitionPaid == 'N'){
-        outputFile << "Öğrenim ücreti ödenmemiştir.\nÜcret : " << bill() << "TL."<< endl;
-    }else{
-        outputFile<< "\nCourse Name "<< setw(10) << "Course No " << setw(10) << "Credits " << setw(10) << "Grade \n" << endl;
+    if (!isTuitionPaid) {
+        outputFile 
+            << "Öğrenim ücreti ödenmemiştir." << endl
+            << "Ücret : " << bill() << "TL."<< endl;
+    }
+    else {
+        outputFile
+          << left
+          << setw(20) << "Course Name" 
+          << right
+          << setw(10) << "Course No" 
+          << setw(10) << "Credits" 
+          << setw(10) << "Grade" 
+          << endl << endl;
         for(int h = 0; h < numberOfCourses; h++){
-            outputFile<< courses[h].getCourseName()
+            outputFile
+                << left 
+                << setw(20) << courses[h].getCourseName()
+                << right 
                 << setw(10) << courses[h].getCoursNo()
                 << setw(10) << courses[h].getCourseCredit()
                 << setw(10) << courses[h].getCourseGrade() << endl;
         }
-        outputFile<< "toplam kredi : " << getHoursEnrolled() << endl
-            << "GPA : " << getGPA() << endl;
+        outputFile
+          << "Total number of credits: " 
+            << getHoursEnrolled() << endl
+          << "Mid-Semester GPA : " 
+            << fixed << setprecision(2) << getGPA() << endl;
         }
-        outputFile<< "................." << endl;
+        outputFile
+          << endl 
+          << "----------------------------" 
+          << endl << endl;
 }
 
-int main(){
-    int number, tuitionPerHours;
+int main(int argc, char** argv){
+    int studentCount, tuitionPerHours;
 
-    fstream file("input.txt", ios::in | ios::out | ios::app);
-    file >> number;
+    ifstream file("input.txt");
+    file >> studentCount;
 
-    studentType *students = new studentType[number];
+    studentType *students = new studentType[studentCount];
 
     file >> tuitionPerHours;
 
     string fname, lname, skip;
-    int nOfcourses, id;
-    char control;
-    for(int i = 0; i < number; i++){
-        file >> fname >> lname >> id >> control >> nOfcourses;
-        students[i].setInfo(fname, lname, id, control, nOfcourses, tuitionPerHours);
+    int courseCount, id;
+    char tuitionChar;
+    for(int i = 0; i < studentCount; i++){
+        file >> fname >> lname >> id >> tuitionChar >> courseCount;
+        students[i].setInfo(
+            fname, lname, id,
+            tuitionChar == 'Y',
+            courseCount, tuitionPerHours);
 
-        courseType *courses = new courseType[nOfcourses];
-        for(int j = 0; j < nOfcourses; j++){
+        courseType courses[courseCount];
+        for(int j = 0; j < courseCount; j++){
             string courseName, courseNumber;
             int courseCredits;
             char courseGrade;
@@ -203,13 +227,14 @@ int main(){
             courses[j] = courseType(courseName, courseNumber, courseCredits, courseGrade);
         }
         students[i].setCourses(courses);
-        getline(file, skip);
-        getline(file, skip);
-        delete[] courses;
+        // ...... gerçekten olacak ise geri ekleyebiliriz
+        //getline(file, skip);
+        //getline(file, skip);
     }
 
-    ofstream outputFile("output.txt");
-    for(int i = 0; i < number; i++)students[i].print(outputFile );
+    // TODO: Çıkış seçeneği ekle (argv?)
+    ofstream outputFile("output.txt"); 
+    for(int i = 0; i < studentCount; i++)students[i].print(outputFile );
 
     return 0;
 }
