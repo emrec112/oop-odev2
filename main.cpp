@@ -194,7 +194,16 @@ void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları s
 int main(int argc, char** argv){
     int studentCount, tuitionPerHours;
 
-    ifstream file("input.txt");
+    string inputFileName = "input.txt",
+           outputFileName = "output.txt";
+
+    if (argc == 3) {
+      inputFileName = argv[1];
+      outputFileName = argv[2];
+    }
+
+
+    ifstream file(inputFileName);
     file >> studentCount;
 
     studentType *students = new studentType[studentCount];
@@ -227,8 +236,7 @@ int main(int argc, char** argv){
         //getline(file, skip);
     }
 
-    // TODO: Çıkış seçeneği ekle (argv?)
-    ofstream outputFile("output.txt"); 
+    ofstream outputFile(outputFileName); 
     for(int i = 0; i < studentCount; i++)students[i].print(outputFile );
 
     return 0;
