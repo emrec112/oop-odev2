@@ -31,6 +31,7 @@ class courseType{
         : courseName(name), courseNo(number), courseCredits(credits), courseGrade(gr) {
 
         }
+        void setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits);
 
         string getCourseName()const{
             return courseName;
@@ -47,24 +48,14 @@ class courseType{
         char getCourseGrade() const{
             return courseGrade; 
         }
-
-        void setCourseName(string newName){
-            courseName = newName;
-        }
-
-        void setCourseNo(string newNo){
-            courseNo = newNo;
-        }
-
-        void setCourseGrade(char newGrade){
-            courseGrade = newGrade;
-        }
-
-        void setCourseCredits(int newCredit){
-            courseCredits = newCredit;
-        }
-
 };
+
+void courseType::setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits){//kursları tek bir fonksiyonda değiştir
+            this->courseName = courseName;
+            this->courseNo = courseNo;
+            this->courseGrade = courseGrade;
+            this->courseCredits = courseCredits;
+}
 
 class studentType : public personType {
     private:
@@ -81,7 +72,6 @@ class studentType : public personType {
         int getHoursEnrolled();
         float getGPA();
         int bill();
-        //set info ekle
         studentType();
         ~studentType(){
             delete[] courses;
@@ -94,9 +84,9 @@ studentType::studentType(){
     isTuitionPaid = false;
 }
 
-void studentType::setInfo(string name, int id, bool isTuitionPaid, int numberOfCourses, int tuition){
+void studentType::setInfo(string name, int studentId, bool isTuitionPaid, int numberOfCourses, int tuition){
     setStudentName(name);
-    studentId = id;
+    this->studentId = studentId;
     this->isTuitionPaid = isTuitionPaid;
     this->numberOfCourses = numberOfCourses;
     this->tuitionPerHours = tuition;
