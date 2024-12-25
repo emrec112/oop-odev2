@@ -7,22 +7,18 @@ using namespace std;
 
 class personType{
     private:
-        string firstName;//sonra bunları birleştir
+        string firstName;
         string lastName;
 
     public:
-        void setStudentName(string firstName, string lastName);
+        void setName(string firstName, string lastName);
 
-        string getStudentFirstName() const{
-            return firstName;
-        }
-
-        string getStudentLastName() const{
-            return lastName;
+        string getName() const{
+          return firstName + " " + lastName;
         }
 };
 
-void personType::setStudentName(string firstName, string lastName){
+void personType::setName(string firstName, string lastName){
     this->firstName = firstName;
     this->lastName = lastName;
 }
@@ -30,7 +26,7 @@ void personType::setStudentName(string firstName, string lastName){
 class courseType{
     private:
         string courseName, courseNo;
-        char courseGrade;//student sınıfı bunu kullanıcak özellikle
+        char courseGrade;
         int courseCredits;
 
     public:
@@ -49,7 +45,8 @@ class courseType{
 
 };
 
-void courseType::setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits){//kursları tek bir fonksiyonda değiştir
+// kursları tek bir fonksiyonda değiştir
+void courseType::setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits){
             this->courseName = courseName;
             this->courseNo = courseNo;
             this->courseGrade = courseGrade;
@@ -89,7 +86,7 @@ bool courseType::operator< (const courseType& other)const{
 class studentType : public personType {
     private:
         int numberOfCourses;
-        courseType *courses;//gradeyi burdan çekicez
+        courseType *courses;
         int studentId;
         bool isTuitionPaid;
         int tuitionPerHours;
@@ -114,7 +111,7 @@ studentType::studentType(){
 }
 
 void studentType::setInfo(string firstName, string lastName, int studentId, bool isTuitionPaid, int numberOfCourses, int tuition){
-    setStudentName(firstName, lastName);
+    setName(firstName, lastName);
     this->studentId = studentId;
     this->isTuitionPaid = isTuitionPaid;
     this->numberOfCourses = numberOfCourses;
@@ -167,12 +164,12 @@ int studentType::bill(){
     return getHoursEnrolled() * tuitionPerHours;
 }
 
-void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları sıralı yazdırma ekle
+void studentType::print(ofstream &outputFile){
     
     sort(courses, courses + numberOfCourses);
     
     outputFile
-        << "Student Name: " << getStudentFirstName() << " " << getStudentLastName() << endl 
+        << "Student Name: " << getName() << endl 
         << "Student ID : " << studentId << endl
         << "Number of courses enrolled: " << numberOfCourses << endl
         << endl;
@@ -213,8 +210,6 @@ void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları s
 }
 
 int main(int argc, char** argv){
-    int studentCount, tuitionPerHours;
-
     string inputFileName = "input.txt",
            outputFileName = "output.txt";
 
@@ -227,16 +222,17 @@ int main(int argc, char** argv){
 
 
     ifstream file(inputFileName);
-    file >> studentCount;
+
+
+    int studentCount, tuitionPerHours;
+    file >> studentCount >> tuitionPerHours;
 
     studentType *students = new studentType[studentCount];
-
-    file >> tuitionPerHours;
 
     string fname, lname, skip;
     int courseCount, id;
     char tuitionChar;
-    for(int i = 0; i < studentCount; i++){
+    for (int i = 0; i < studentCount; i++) {
         file >> fname >> lname >> id >> tuitionChar >> courseCount;
         students[i].setInfo(
             fname, lname, id,
@@ -244,7 +240,7 @@ int main(int argc, char** argv){
             courseCount, tuitionPerHours);
 
         courseType courses[courseCount];
-        for(int j = 0; j < courseCount; j++){
+        for (int j = 0; j < courseCount; j++) {
             string courseName, courseNumber;
             int courseCredits;
             char courseGrade;
@@ -254,7 +250,7 @@ int main(int argc, char** argv){
             if ( courseGrade < 'A' 
               || courseGrade > 'F' 
               || courseGrade == 'E' ) {
-                cerr << id << " numaralı öğrencide yanlış grade değeri: " << courseGrade << endl;
+                cerr << "HATA: " << id << " numaralı öğrencide yanlış grade değeri: " << courseGrade << endl;
                 exit(0);
             }
             courses[j] = courseType(courseName, courseNumber, courseCredits, courseGrade);
@@ -263,7 +259,10 @@ int main(int argc, char** argv){
     }
 
     ofstream outputFile(outputFileName); 
-    for(int i = 0; i < studentCount; i++)students[i].print(outputFile );
+
+    for (int i = 0; i < studentCount; i++) {
+        students[i].print(outputFile);
+    }
 
     return 0;
 }
