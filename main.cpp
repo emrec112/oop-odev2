@@ -224,6 +224,10 @@ int main(int argc, char** argv){
             char courseGrade;
 
             file >> courseName >> courseNumber >> courseCredits >> courseGrade;
+            if(courseGrade < 'A' || courseGrade > 'F'){
+                cout << "Dosya bozuk\n";
+                exit(0);
+            }
             courses[j] = courseType(courseName, courseNumber, courseCredits, courseGrade);
         }
         students[i].setCourses(courses);
