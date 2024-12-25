@@ -3,3 +3,4 @@
 .vscode/
 output.txt
 .ccls-cache/
+*.orig
