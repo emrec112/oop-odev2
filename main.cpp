@@ -1,3 +1,16 @@
+// /][][][][][][][][][][][][][][][][][][]\
+// []/* * * * * * * * * * * * * * * * *\[]
+// []*                                 *[]
+// []*   KTÜ BİLGİSAYAR MÜHENDİSLİĞİ   *[]
+// []*   Object Oriented Programming   *[]
+// []*     2. Zorunlu Dönem Ödevi      *[]
+// []*                                 *[]
+// []*      Deniz Tunç     434377      *[]
+// []*    Emre Camuzoğlu   439553      *[]
+// []*                                 *[]
+// []\* * * * * * * * * * * * * * * * */[]
+// \][][][][][][][][][][][][][][][][][][]/
+
 #include <iostream>
 #include <string>
 #include <fstream>
