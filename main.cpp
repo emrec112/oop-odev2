@@ -212,6 +212,8 @@ int main(int argc, char** argv){
     string inputFileName = "input.txt",
            outputFileName = "output.txt";
 
+    // ./program <input> <output> 
+    // şeklinde çağırmaya izin ver
     if (argc == 3) {
       inputFileName = argv[1];
       outputFileName = argv[2];
@@ -243,16 +245,16 @@ int main(int argc, char** argv){
             char courseGrade;
 
             file >> courseName >> courseNumber >> courseCredits >> courseGrade;
-            if(courseGrade < 'A' || courseGrade > 'F'){
-                cout << "Dosya bozuk\n";
+            // Olası grade değerleri yalnızca A,B,C,D,F
+            if ( courseGrade < 'A' 
+              || courseGrade > 'F' 
+              || courseGrade == 'E' ) {
+                cerr << id << " numaralı öğrencide yanlış grade değeri: " << courseGrade << endl;
                 exit(0);
             }
             courses[j] = courseType(courseName, courseNumber, courseCredits, courseGrade);
         }
         students[i].setCourses(courses);
-        // ...... gerçekten olacak ise geri ekleyebiliriz
-        //getline(file, skip);
-        //getline(file, skip);
     }
 
     ofstream outputFile(outputFileName); 
