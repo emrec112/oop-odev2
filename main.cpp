@@ -33,21 +33,11 @@ class courseType{
         }
         void setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits);
 
-        string getCourseName()const{
-            return courseName;
-        }
+        string getCourseName()const;
+        string getCourseNo()const;
+        int getCourseCredit()const;
+        char getCourseGrade()const;
 
-        string getCoursNo()const{
-            return courseNo;
-        }
-
-        int getCourseCredit() const{
-            return courseCredits; 
-        }
-
-        char getCourseGrade() const{
-            return courseGrade; 
-        }
 };
 
 void courseType::setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits){//kursları tek bir fonksiyonda değiştir
@@ -55,6 +45,22 @@ void courseType::setCourseInfo(string courseName, string courseNo, char courseGr
             this->courseNo = courseNo;
             this->courseGrade = courseGrade;
             this->courseCredits = courseCredits;
+}
+
+string courseType::getCourseName()const{
+    return courseName;
+}
+
+string courseType::getCourseNo()const{
+    return courseNo;
+}
+
+int courseType::getCourseCredit() const{
+    return courseCredits; 
+}
+
+char courseType::getCourseGrade() const{
+    return courseGrade; 
 }
 
 class studentType : public personType {
@@ -165,7 +171,7 @@ void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları s
                 << left 
                 << setw(20) << courses[h].getCourseName()
                 << right 
-                << setw(10) << courses[h].getCoursNo()
+                << setw(10) << courses[h].getCourseNo()
                 << setw(10) << courses[h].getCourseCredit()
                 << setw(10) << courses[h].getCourseGrade() << endl;
         }
