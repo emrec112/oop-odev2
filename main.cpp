@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
 using namespace std;
 
 class personType{
@@ -38,6 +39,8 @@ class courseType{
         int getCourseCredit()const;
         char getCourseGrade()const;
 
+        bool operator<(const courseType &other)const;
+
 };
 
 void courseType::setCourseInfo(string courseName, string courseNo, char courseGrade, int courseCredits){//kursları tek bir fonksiyonda değiştir
@@ -61,6 +64,20 @@ int courseType::getCourseCredit() const{
 
 char courseType::getCourseGrade() const{
     return courseGrade; 
+}
+
+// std::sort için küçüktür operatörünü overload ediyoruz
+// Sıralama kriteri, kurs numarasının alfabetik değeri
+bool courseType::operator< (const courseType& other)const{
+
+  int minLength = min(other.getCourseNo().length(), getCourseNo().length());
+
+  for(int i = 0; i < minLength; i++){
+    if (getCourseNo()[i] < other.getCourseNo()[i]) return true;
+    if (getCourseNo()[i] > other.getCourseNo()[i]) return false;
+  }
+
+  return getCourseNo().length() < other.getCourseNo().length();
 }
 
 class studentType : public personType {
@@ -145,6 +162,8 @@ int studentType::bill(){
 }
 
 void studentType::print(ofstream &outputFile){//setwleri düzenle ve kursları sıralı yazdırma ekle
+    
+    sort(courses, courses + numberOfCourses);
     
     outputFile
         << "Student Name: " << getStudentName() << endl 
